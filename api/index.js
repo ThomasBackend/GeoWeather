@@ -24,11 +24,11 @@ app.get('/api/hello',async (req,res) =>  {
     const decodedName = decodeURIComponent(visitorName);
     const name = decodedName.replace(/["/]/g, '');
 
-    // const ipAddress = await axios.get(`https://ipinfo.io/${clientIp}?token=${ipInfoApiToken}` )
-    // .then((response) => {
-    //   console.log(response.data);
-    //   return response.data;
-    // });
+    const ipAddress = await axios.get(`https://ipinfo.io/${clientIp}?token=${ipInfoApiToken}` )
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
 
     // const weather = await axios.get(`https://open-weather13.p.rapidapi.com/city/${ipAddress.city}/${ipAddress.country}`,{
     //     headers: {
