@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const weatherApiKey = process.env.WEATHER_API_KEY;
 const weatherApiHost = process.env.WEATHER_API_HOST;
-const ipInfoApiToken = process.env.IPINFO_API_TOKEN;
+
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.get('/api/hello',async (req,res) =>  {
     const decodedName = decodeURIComponent(visitorName);
     const name = decodedName.replace(/["/]/g, '');
 
-    const ipAddress = await axios.get(`https://ipinfo.io/${clientIp}?token=${ipInfoApiToken}`)
+    const ipAddress = await axios.get(`https://ipinfo.io/${clientIp}?token=5cfe8a4220fe10`)
     .then((response) => {
       console.log(response.data);
       return response.data;
