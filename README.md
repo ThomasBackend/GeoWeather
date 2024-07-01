@@ -12,7 +12,7 @@ GeoWeather is a Node.js Express application that returns the user's IP address, 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/GeoWeather.git
+    git clone https://github.com/ThomasBackend/GeoWeather.git
     cd GeoWeather
     ```
 
@@ -25,8 +25,8 @@ GeoWeather is a Node.js Express application that returns the user's IP address, 
 
     Create a `.env` file in the root directory and add your API keys:
     ```plaintext
-    GEOLOCATION_API_KEY=your_geolocation_api_key
-    WEATHER_API_KEY=your_weather_api_key
+    WEATHER_API_KEY = 'e3e5315b9emsh372462e9be104ddp10c7a2jsn39cc874dd3b7'
+    WEATHER_API_HOST = 'open-weather13.p.rapidapi.com'
     ```
 
 4. Start the server:
@@ -38,14 +38,16 @@ GeoWeather is a Node.js Express application that returns the user's IP address, 
 
 Send a GET request to the endpoint:
 
-GET /api/location
+GET /api/hello?visitor_name="Mark"
+
+Replace the req query variable "Mark" with your name
 
 The response will be a JSON object containing the user's IP address, city, and current temperature:
 ```json
 {
-    "ip": "123.456.789.012",
-    "city": "New York",
-    "temperature": "22°C"
+    "client_ip": "123.456.789.012",
+    "location": "New York",
+    "greeting": "Hello, Mark!, the temperature is 25 degrees Celcius in New York"
 }
 ```
 ## Dependencies
