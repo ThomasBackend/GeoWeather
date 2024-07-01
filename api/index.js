@@ -5,9 +5,9 @@ require('dotenv').config();
 
 const weatherApiKey = process.env.WEATHER_API_KEY;
 const weatherApiHost = process.env.WEATHER_API_HOST;
+const ipInfoApiToken = process.env.IPINFO_API_TOKEN;
 
 const app = express();
-
 
 
 app.get('/api/hello',async (req,res) =>  {
@@ -15,14 +15,16 @@ app.get('/api/hello',async (req,res) =>  {
 
     const visitorName = req.query.visitor_name;
 
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log(clientIp)
+
     if(!visitorName){
         return res.status(404).send('Name is missing');
     }
     const decodedName = decodeURIComponent(visitorName);
     const name = decodedName.replace(/["/]/g, '');
 
-    const ipAddress = await axios.get('https://ipinfo.io/json'
-    )
+    const ipAddress = await axios.get(`https://ipinfo.io/${clientIp}?token=${ipInfoApiToken}` )
     .then((response) => {
       console.log(response.data);
       return response.data;
@@ -45,6 +47,7 @@ app.get('/api/hello',async (req,res) =>  {
 
     return res.status(200).json({client_ip: ipAddress.ip, location: ipAddress.city, greeting: `Hello, ${name}!, the temperature is ${tempInCelcius} degrees Celcius in ${ipAddress.city}`}) 
 }catch(error){
+    console.log(error)
     return res.status(500).send(error);
 }
 
