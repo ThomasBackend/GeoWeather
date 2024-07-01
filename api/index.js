@@ -30,24 +30,23 @@ app.get('/api/hello',async (req,res) =>  {
       return response.data;
     });
 
-    // const weather = await axios.get(`https://open-weather13.p.rapidapi.com/city/${ipAddress.city}/${ipAddress.country}`,{
-    //     headers: {
-    //       "x-rapidapi-host": weatherApiHost,
-    //       "x-rapidapi-key": weatherApiKey,
-    //     }
-    //   }
-    // )
-    // .then((response) => {
-    //   console.log(response.data);
-    //   return response.data;
-    // });
+    const weather = await axios.get(`https://open-weather13.p.rapidapi.com/city/${ipAddress.city}/${ipAddress.country}`,{
+        headers: {
+          "x-rapidapi-host": weatherApiHost,
+          "x-rapidapi-key": weatherApiKey,
+        }
+      }
+    )
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
 
-    // const tempInCelcius = Math.round((weather.main.temp - 32) * (5/9));
+    const tempInCelcius = Math.round((weather.main.temp - 32) * (5/9));
   
 
-    // return res.status(200).json({client_ip: ipAddress.ip, location: ipAddress.city, greeting: `Hello, ${name}!, the temperature is ${tempInCelcius} degrees Celcius in ${ipAddress.city}`}) 
+    return res.status(200).json({client_ip: ipAddress.ip, location: ipAddress.city, greeting: `Hello, ${name}!, the temperature is ${tempInCelcius} degrees Celcius in ${ipAddress.city}`}) 
 
-    return res.status(200).json({ipAddress})
 }catch(error){
     console.log(error)
     return res.status(500).send(error);
