@@ -59,8 +59,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-const port = 4000;
+const port = 3000;
 
 app.listen(port, ()=>{
     console.log(`Geolocation Server started at ${port}`)
 })
+
+export default app;
