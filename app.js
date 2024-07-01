@@ -65,4 +65,4 @@ app.listen(port, ()=>{
     console.log(`Geolocation Server started at ${port}`)
 })
 
-export default app;
+module.exports = app;
