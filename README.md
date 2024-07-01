@@ -1,6 +1,6 @@
 # GeoWeather
 
-GeoWeather is a Node.js Express application that returns the user's IP address, city, and current temperature. This app uses geolocation and weather APIs to provide real-time information based on the user's IP address.
+GeoWeather is a Node.js Express application that returns the user's IP address, city, and current temperature. This app uses geolocation and weather APIs to provide real-time information based on the user's IP address. Test app at https://geo-weather-two.vercel.app/api/hello?visitor_name="Joseph"
 
 ## Features
 
